@@ -17,13 +17,12 @@ namespace Snake
 
             Draw(x1, y1, sym1);
 
-<<<<<<< Updated upstream
             int x2 = 4;
             int y2 = 5;
             char sym2 = '#';
 
             Draw(x2, y2, sym2);
-=======
+
             // Далее набираем название этой точки и показываем чему равняются атрибуты
             p1.x = 1;
             p1.y = 3;
@@ -37,7 +36,6 @@ namespace Snake
             p2.sym = '#';
 
             p2.Draw();
->>>>>>> Stashed changes
 
             Console.ReadLine();
         }

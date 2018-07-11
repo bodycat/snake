@@ -25,7 +25,7 @@ namespace Snake
 
             Console.ReadLine();
         }
-
+           
         // Повторяющиеся куски кода выводятся в отдельные функции
         // Таким образом программа становится проще
         static void Draw(int x, int y, char sym)

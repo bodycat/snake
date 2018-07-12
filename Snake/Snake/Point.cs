@@ -11,7 +11,7 @@ namespace Snake
         public int x;
         public int y;
         public char sym;
-         
+          
         public Point()
         {
             Console.WriteLine("Создаёся новая точка");
@@ -27,9 +27,7 @@ namespace Snake
         public void Draw()
         {
             Console.SetCursorPosition(x, y);
-            Console.Write(sym);
+            Console.Write( sym );
         }
-
     }
-
-} 
+}

@@ -3,71 +3,54 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+// Инкапсуляция - свойства классов скрывать детали своей реализации
+// - Механизм языка, позволяющий ограничить доступ одних компонентов программы к другим;
+// - Языковая конструкция, позволяющая связать данные с методами, предназначенными для обработки этих данных.
 namespace Snake
 {
     class Program
-    {  
+    {
         static void Main(string[] args)
-        { 
-            int x = 1;
-            Func1(x);
-            Console.WriteLine("Call Func1.x = " + x);
-
-            x = 1;
-            Func2(x);
-            Console.WriteLine("Call Func2.x = " + x);
-
-            x = 1;
-            Func3(x);
-            Console.WriteLine("Call Func3.x = " + x);
-
+        {
             Point p1 = new Point(1,3,'*');
-            Move(p1, 10, 10);
-            Console.WriteLine("Call Move p1.x = " + p1.x + ", p1.y = " + p1.y);
-             
+            p1.Draw();
+            
             Point p2 = new Point(4, 5, '#');
-            p1 = p2;
-            p2.x = 8;
-            p2.y = 8;
-            Console.WriteLine("p1 = p2. p1.x = " + p1.x + ", p1.y = " + p1.y + "; p2.x = " + p2.x + ", p2.y = " + p2.y);
+            p2.Draw();
 
-            p1 = new Point(1, 3, '*');
-            Update(p1);
-            Console.WriteLine("Call Move. p1.x = " + p1.x + " p1.y = " + p1.y);
+            List<int> numList = new List<int>();
+            numList.Add(0);
+            numList.Add(1);
+            numList.Add(2);
 
-            Console.ReadLine();
-        }
+            int x = numList[0];
+            int y = numList[1];
+            int z = numList[2];
 
-        public static void Func1(int value)
-        {
-            //
-        }
+            foreach (int i in numList)
+            {
+                Console.WriteLine(i);
+            }
+            numList.RemoveAt(0);
+            List<Point> PList = new List<Point>();
+            PList.Add(p1);
+            PList.Add(p2);
 
-        public static void Func2(int value)
-        {
-            value = value + 1;
-        }
-
-        public static void Func3(int x)
-        {
-            x = x + 1;
-        }
-
-        public static void Move(Point p, int dx, int dy)
-        {
-            p.x = p.x + dx;
-            p.y = p.y + dy;
-        }
-
-        public static void Reset(Point p)
-        {
-            p = new Point();
-        }
-
-        public static void Update(Point p)
-        {
-            p = new Point();
+// Домашнее задание: свои списки с различными символами
+// ASCII с 33 до 47 знака идут символы, дальше цифры и алфавит
+            int a = 33;
+//          int a = int.Parse(Console.ReadLine());
+            int b = 47;
+            //          int b = int.Parse(Console.ReadLine());
+            Console.WriteLine("Выводим символы из списка CharList:");
+            List<Char> CharList = new List<Char>();
+            for (int i = a; i <= b; i++)
+            {
+                CharList.Add((char)i);
+            }
+            foreach (Char item in CharList)
+            Console.WriteLine(item + " - символ таблицы ASCII");
+        Console.ReadKey();
         }
     }
 }

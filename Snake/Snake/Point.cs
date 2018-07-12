@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-// Класс - такой же тип данных как числа или символы
+
 namespace Snake
 {
     class Point
@@ -23,11 +23,13 @@ namespace Snake
             y = _y;
             sym = _sym;
         }
-          
+
         public void Draw()
         {
             Console.SetCursorPosition(x, y);
-            Console.Write( sym );
+            Console.Write(sym);
         }
+
     }
+
 }

@@ -14,16 +14,15 @@ namespace Snake
           
         public Point()
         {
-            Console.WriteLine("Создаёся новая точка");
         }
-
+        // Конструкторы - методы, с  помощью которых создаём различные точки
         public Point(int _x, int _y, char _sym)
         {
             x = _x;
             y = _y;
             sym = _sym;
         }
-
+        // Методы, которые можем вызывать для каждой конкретной точки
         public void Draw()
         {
             Console.SetCursorPosition(x, y);
@@ -31,3 +30,5 @@ namespace Snake
         }
     }
 }
+
+// Класс -> экземпляр (объект) 

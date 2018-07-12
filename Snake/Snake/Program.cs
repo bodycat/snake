@@ -12,45 +12,21 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            Point p1 = new Point(1,3,'*');
+            Point p1 = new Point(1, 3, '*');
             p1.Draw();
-            
+
             Point p2 = new Point(4, 5, '#');
             p2.Draw();
 
-            List<int> numList = new List<int>();
-            numList.Add(0);
-            numList.Add(1);
-            numList.Add(2);
+            HorizontalLine xline = new HorizontalLine(5,10,8,'+');
+            xline.Drow();
 
-            int x = numList[0];
-            int y = numList[1];
-            int z = numList[2];
+            VerticalLine yline = new VerticalLine(13, 1, 5, '$');
+            yline.Drow();
 
-            foreach (int i in numList)
-            {
-                Console.WriteLine(i);
-            }
-            numList.RemoveAt(0);
-            List<Point> PList = new List<Point>();
-            PList.Add(p1);
-            PList.Add(p2);
-
-// Домашнее задание: свои списки с различными символами
-// ASCII с 33 до 47 знака идут символы, дальше цифры и алфавит
-            int a = 33;
-//          int a = int.Parse(Console.ReadLine());
-            int b = 47;
-            //          int b = int.Parse(Console.ReadLine());
-            Console.WriteLine("Выводим символы из списка CharList:");
-            List<Char> CharList = new List<Char>();
-            for (int i = a; i <= b; i++)
-            {
-                CharList.Add((char)i);
-            }
-            foreach (Char item in CharList)
-            Console.WriteLine(item + " - символ таблицы ASCII");
-        Console.ReadKey();
+            Console.ReadLine();
         }
     }
 }
+
+// ДЗ - вертикальную линию

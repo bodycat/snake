@@ -9,7 +9,7 @@ namespace Snake
     class Program
     {
         static void Main(string[] args)
-        {
+        { 
             int x = 1;
             Func1(x);
             Console.WriteLine("Call Func1.x = " + x);

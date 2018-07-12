@@ -6,29 +6,26 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
-    class HorizontalLine
+    class HorizontalLine : Figure
+// Горизонтальная линия наследуется от фигуры (частный случай)
     {
-        List<Point> pList;
+// После добавления наследования можно убрать следующее:
+//      List<Point> pList;
 
         public HorizontalLine(int xLeft, int xRight, int y, char sym)
         {
             pList = new List<Point>();
             for(int x = xLeft; x <= xRight; x++)
             {
+//              После изменения идентификатора доступа в классе Figure обнаружим интересную вещь:
+//              Из класса горизонтальной линии уехал метод Drow, pList 
+//              Однако горизонтальная линия является частным случаем класса Figure
                 Point p = new Point(x, y, sym);
                 pList.Add(p);
             }
-
-/*
-            Point p1 = new Point(4, 4, '*');
-            Point p2 = new Point(5, 4, '*');
-            Point p3 = new Point(6, 4, '*');
-            pList.Add( p1 );
-            pList.Add( p2 );
-            pList.Add( p3 ); 
-*/
         }
-
+//      И метод рисования
+/*
         public void Drow()
         {
             foreach(Point p in pList)
@@ -36,5 +33,6 @@ namespace Snake
                 p.Draw();
             }
         }
+*/
     }
 }

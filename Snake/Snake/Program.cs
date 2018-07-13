@@ -19,6 +19,7 @@ namespace Snake
         static void Main(string[] args)
         {
             Console.SetBufferSize( 800, 600);
+            /*
             Point p1 = new Point(1, 1, '*');
             p1.Draw();
             Point p2 = new Point(2, 1, '#');
@@ -29,12 +30,26 @@ namespace Snake
             y1line.Drow();
             VerticalLine y2line = new VerticalLine(10, 5, 10, '$');
             y2line.Drow();
+            */
             // HELLO итд
 
+            /*
             Employee e = new Employee();
             e.age = 42;
-            e.pay = 30000;
+            e.pay = 30000; */
 
+            //Отрисовка рамки
+            HorizontalLine upLine = new HorizontalLine(0, 78, 0, '+');
+            HorizontalLine downLine = new HorizontalLine(0, 78, 24, '+');
+            VerticalLine leftLine = new VerticalLine(0, 24, 0, '$');
+            VerticalLine rightLine = new VerticalLine(0, 24, 78, '$');
+
+            // Отрисовка точек
+            Point p = new Point(4, 5, '*');
+            Snake snake = new Snake( p, 4, Direction.RIGHT );
+            // Опишем метод, позволяющий отслеживать точки (магия C#)
+            
+            
             Console.ReadLine();
         }
     }

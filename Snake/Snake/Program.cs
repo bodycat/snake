@@ -40,8 +40,8 @@ namespace Snake
             e.pay = 30000; */
 
             //Отрисовка рамки
-            HorizontalLine upLine = new HorizontalLine(0, 78, 0, '+');
-            HorizontalLine downLine = new HorizontalLine(0, 78, 24, '+');
+            HorizontalLine upLine = new HorizontalLine(0, 78, 0, '$');
+            HorizontalLine downLine = new HorizontalLine(0, 78, 24, '$');
             VerticalLine leftLine = new VerticalLine(0, 0, 24, '$');
             VerticalLine rightLine = new VerticalLine(78, 0, 24, '$');
             upLine.Drow();
@@ -52,7 +52,7 @@ namespace Snake
             // Отрисовка точек
             Point p = new Point(4, 5, '*');
             Snake snake = new Snake( p, 4, Direction.RIGHT );
-            
+            snake.Drow();
             // Опишем метод, позволяющий отслеживать точки (магия C#)
             
             

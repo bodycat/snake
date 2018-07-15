@@ -24,15 +24,5 @@ namespace Snake
                 pList.Add(p);
             }
         }
-//      И метод рисования
-/*
-        public void Drow()
-        {
-            foreach(Point p in pList)
-            {
-                p.Draw();
-            }
-        }
-*/
     }
 }

@@ -11,35 +11,43 @@ namespace Snake
     // Для начала, змейка - это фигура, добавим класс
     class Snake : Figure 
     {
-        // Далее, у неё есть начальные координаты, создадим конструктор и добавим туда параметры
-        // public Snake(Point tail, int length, int direction)
-        // public Snake(Point tail, int length, int direction) Тут вариант с целочисленной переменной
-        // но все константы цифр лево 0 право 1 верх 2 низ 3 неудобны
-        // добавим перечисления, добавив класс Direction (enum) 
-        public Snake(Point tail, int length, Direction direction)
-        // Теперь передаём одно из четырех значений
+        Direction direction;
+        //Класс Snake хранит данные направления движения
+        public Snake(Point tail, int length, Direction _direction)
         {
+            direction = _direction;
+            // теперь мы имеем возможность воспользоваться им в методах
+            // внутри класса Snake
             pList = new List<Point>();
             for(int i = 0; i < length; i++)
             {
                 Point p = new Point(tail);
-                // в цикле несколько раз создадим точки, точные копии хвостовой точки
-                // затем сдвигаем точки по направлению в Direction
-                // на 1 цикле сдвигаем в хвостовую точку на позицию 0 (ничего не изменится) попадает в цикл
-                // далее принимает значение 1-ке, сдвигаем позицию точки на 1-ку и добавим в список итд
-                // в итоге length точек добавим в список
-
-                // добавим реализацию конструктора Point, который принимает точку и надо описать метод Move
-
                 p.Move(i, direction);
                 pList.Add(p);
             }
-/*
-            0 - left
-            1 - right
-            2 - ... 
-*/
-// Нужно исопльзовать перечисление, добавим класс 
+        }
+
+        internal void Move()
+        {
+            //throw new NotImplementedException();
+            Point tail = pList.First();
+            pList.Remove(tail);
+            Point head = GetNextPoint();
+            pList.Add(head);
+
+            tail.Clear();
+            head.Draw();
+        }
+
+        public Point GetNextPoint()
+        {
+            // ьекущая позиция головы змейки
+            Point head = pList.Last();
+            // создаем новую точку, копия предыдущего положения головы
+            Point nextPoint = new Point(head);
+            // двигаем точку по направлению дирекшн
+            nextPoint.Move(1, direction);
+            return nextPoint;
         }
     }
 }

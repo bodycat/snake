@@ -8,8 +8,7 @@ namespace Snake
 {
     class VerticalLine : Figure
     {
-        // List<Point> pList;
-
+        // List<Point> pList; ушёл в Figure и берётся оттуда
         public VerticalLine(int x, int yDown, int yTop, char sym)
         {
             pList = new List<Point>();
@@ -19,14 +18,5 @@ namespace Snake
                 pList.Add(p);
             }
         }
-/*
-        public void Drow()
-        {
-            foreach (Point p in pList)
-            {
-                p.Draw();
-            }
-        }
-*/
     }
 }

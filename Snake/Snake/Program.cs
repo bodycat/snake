@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//чтобы задержка Thread.Sleep работала подключаем директиву
+using System.Threading;
 // ООП
 
 // Инкапсуляция - свойства классов скрывать детали своей реализации
@@ -44,18 +46,30 @@ namespace Snake
             HorizontalLine downLine = new HorizontalLine(0, 78, 24, '$');
             VerticalLine leftLine = new VerticalLine(0, 0, 24, '$');
             VerticalLine rightLine = new VerticalLine(78, 0, 24, '$');
-            upLine.Drow();
-            downLine.Drow();
-            leftLine.Drow();
-            rightLine.Drow();
+            upLine.Draw();
+            downLine.Draw();
+            leftLine.Draw();
+            rightLine.Draw();
 
             // Отрисовка точек
             Point p = new Point(4, 5, '*');
             Snake snake = new Snake( p, 4, Direction.RIGHT );
-            snake.Drow();
+            snake.Draw();
             // Опишем метод, позволяющий отслеживать точки (магия C#)
-            
-            
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Draw();
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Draw();
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Draw();
+            snake.Move();
+            Thread.Sleep(300);
+
+
+
             Console.ReadLine();
         }
     }

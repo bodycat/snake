@@ -13,7 +13,7 @@ namespace Snake
         protected List<Point> pList;
 //      Чтобы pList была видна у наследников
 
-        public void Drow()
+        public void Draw()
         {
             foreach (Point p in pList)
             {

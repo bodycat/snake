@@ -6,18 +6,16 @@ using System.Threading.Tasks;
 // Абстрагирование - способ выделить набор значимых характеристик объекта,
 // Исключая из рассмотрения незначимые
 namespace Snake
+    
 {
     // Наша змейка должна уметь двигаться, кушать, врезаться ит.д.
-    // Для начала, змейка - это фигура, добавим класс
     class Snake : Figure 
     {
-        Direction direction;
-        //Класс Snake хранит данные направления движения
+        // На этом уроке меняем модификатор доступа, добавив паблики
+        public Direction direction;
         public Snake(Point tail, int length, Direction _direction)
         {
             direction = _direction;
-            // теперь мы имеем возможность воспользоваться им в методах
-            // внутри класса Snake
             pList = new List<Point>();
             for(int i = 0; i < length; i++)
             {
@@ -29,7 +27,6 @@ namespace Snake
 
         internal void Move()
         {
-            //throw new NotImplementedException();
             Point tail = pList.First();
             pList.Remove(tail);
             Point head = GetNextPoint();
@@ -41,7 +38,7 @@ namespace Snake
 
         public Point GetNextPoint()
         {
-            // ьекущая позиция головы змейки
+            // текущая позиция головы змейки
             Point head = pList.Last();
             // создаем новую точку, копия предыдущего положения головы
             Point nextPoint = new Point(head);

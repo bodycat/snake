@@ -73,15 +73,7 @@ namespace Snake
                 if(Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
-                    if (key.Key == ConsoleKey.LeftArrow)
-                        //доступа к direction до public в Snake не было
-                        snake.direction = Direction.LEFT;
-                    else if (key.Key == ConsoleKey.RightArrow)
-                        snake.direction = Direction.RIGHT;
-                    else if (key.Key == ConsoleKey.DownArrow)
-                        snake.direction = Direction.DOWN;
-                    else if (key.Key == ConsoleKey.UpArrow)
-                        snake.direction = Direction.UP;
+                    snake.HandleKey(key.Key);
                 }
                 Thread.Sleep(100);
                 snake.Move();

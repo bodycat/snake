@@ -12,7 +12,9 @@ namespace Snake
     class Snake : Figure 
     {
         // На этом уроке меняем модификатор доступа, добавив паблики
-        public Direction direction;
+        // public Direction direction;
+        // Вернули код HandleKey в класс Snake, убираем public
+        Direction direction;
         public Snake(Point tail, int length, Direction _direction)
         {
             direction = _direction;
@@ -45,6 +47,19 @@ namespace Snake
             // двигаем точку по направлению дирекшн
             nextPoint.Move(1, direction);
             return nextPoint;
+        }
+
+        public void HandleKey(ConsoleKey key)
+        {
+            if (key == ConsoleKey.LeftArrow)
+                //доступа к direction до public в Snake не было
+                direction = Direction.LEFT;
+            else if (key == ConsoleKey.RightArrow)
+                direction = Direction.RIGHT;
+            else if (key == ConsoleKey.DownArrow)
+                direction = Direction.DOWN;
+            else if (key == ConsoleKey.UpArrow)
+                direction = Direction.UP;
         }
     }
 }

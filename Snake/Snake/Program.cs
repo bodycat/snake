@@ -21,31 +21,13 @@ namespace Snake
         static void Main(string[] args)
         {
             // размер буфера не меньше размера консоли и не больше int64
-            Console.SetBufferSize( 150, 150);
-            /*
-            Point p1 = new Point(1, 1, '*');
-            p1.Draw();
-            Point p2 = new Point(2, 1, '#');
-            p2.Draw();
-            HorizontalLine x1line = new HorizontalLine(5,10,7,'+');
-            x1line.Drow();
-            VerticalLine y1line = new VerticalLine(5, 5, 10, '$');
-            y1line.Drow();
-            VerticalLine y2line = new VerticalLine(10, 5, 10, '$');
-            y2line.Drow();
-            */
-            // HELLO итд
-
-            /*
-            Employee e = new Employee();
-            e.age = 42;
-            e.pay = 30000; */
+            Console.SetBufferSize( 130, 130);
 
             //Отрисовка рамки
-            HorizontalLine upLine = new HorizontalLine(0, 78, 0, '$');
-            HorizontalLine downLine = new HorizontalLine(0, 78, 24, '$');
-            VerticalLine leftLine = new VerticalLine(0, 0, 24, '$');
-            VerticalLine rightLine = new VerticalLine(78, 0, 24, '$');
+            HorizontalLine upLine = new HorizontalLine(0, 78, 0, '#');
+            HorizontalLine downLine = new HorizontalLine(0, 78, 24, '#');
+            VerticalLine leftLine = new VerticalLine(0, 0, 24, '#');
+            VerticalLine rightLine = new VerticalLine(78, 0, 24, '#');
             upLine.Draw();
             downLine.Draw();
             leftLine.Draw();
@@ -56,18 +38,35 @@ namespace Snake
             Snake snake = new Snake( p, 4, Direction.RIGHT );
             snake.Draw();
             // Опишем метод, позволяющий отслеживать точки (магия C#)
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Draw();
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Draw();
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Draw();
-            snake.Move();
-            Thread.Sleep(300);
 
+            // Добавили появление еды на карте
+            FoodCreator foodCreator = new FoodCreator(78, 24, '$');
+            Point food = foodCreator.CreateFood();
+            food.Draw();
+
+            while (true)
+            {
+                // True or False (возвращает бинарное значение)
+                if(snake.Eat( food ) )
+                {
+                    food = foodCreator.CreateFood();
+                    //food = foodCreator.CreateFood();
+                    food.Draw();
+                }
+                else
+                {
+                    snake.Move();
+                }
+                Thread.Sleep(100);
+
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    snake.HandleKey(key.Key);
+                }
+
+            }
+            /*
             while(true)
             {
                 if(Console.KeyAvailable)
@@ -78,6 +77,7 @@ namespace Snake
                 Thread.Sleep(100);
                 snake.Move();
             }
+            */
 //Console.ReadLine();
         }
     }

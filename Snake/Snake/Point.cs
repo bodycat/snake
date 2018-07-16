@@ -53,6 +53,7 @@ namespace Snake
 
         public void Draw()
         {
+            //нужно проверку поставить на выход из границ
             Console.SetCursorPosition(x, y);
             Console.Write( sym );
         }
@@ -61,6 +62,12 @@ namespace Snake
         {
             sym = ' ';
             Draw();
+        }
+
+        public bool IsHit(Point p)
+        // Проверка, есть ли пересечения текущей точки 
+        {
+            return p.x == this.x && p.y == this.y;
         }
 
         public override string ToString()

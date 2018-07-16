@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 // Абстрагирование - способ выделить набор значимых характеристик объекта,
 // Исключая из рассмотрения незначимые
 namespace Snake
-    
 {
     // Наша змейка должна уметь двигаться, кушать, врезаться ит.д.
     class Snake : Figure 
@@ -60,6 +59,22 @@ namespace Snake
                 direction = Direction.DOWN;
             else if (key == ConsoleKey.UpArrow)
                 direction = Direction.UP;
+        }
+
+        internal bool Eat( Point food)
+        {
+            Point head = GetNextPoint();
+            if ( head.IsHit( food ) )
+            {
+                // if(head.x == food.x && head.y ==food.y)
+                // эта проверка в ответственности класса точка
+                // акт питания, если точка совпадает с головой змеи
+                food.sym = head.sym;
+                pList.Add( food );
+                return true;
+            }
+            else
+                return false;
         }
     }
 }

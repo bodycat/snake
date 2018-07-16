@@ -11,8 +11,20 @@ using System.Threading;
 // - Механизм языка, позволяющий ограничить доступ одних компонентов программы к другим;
 // - Языковая конструкция, позволяющая связать данные с методами, предназначенными для обработки этих данных.
 
+// Инкапсуляция - упаковка данных или функций в единый компонент (классы)
+// обьединяет данный код и защищает от внешнего вмешательства и неправильного использования
+
 // Наследование - свойство системы, позволяющее описать новый класс на основе уже существующего
 // Частично или полностью замещающйся функциональностью
+
+// Наследование позволяет создавать новые классы, которые повторно используют, 
+// расширяют и изменяют поведение определенных других классов (Фигура - вертикал лайн, снейк итд)
+
+// Полиморфизм - многообразие форм, имеющие несколько аспектов
+// Во время выполнения выполнения производного класса могут рассматриваться как 
+// объекты выполнения базового класса в таких местах как:
+// параметры метода, коллекции или массивы
+// когда это происходит объявленный тип объекта перестаёт соответствовать своему типу во время выполнения
 
 namespace Snake
 {
@@ -20,66 +32,79 @@ namespace Snake
     {
         static void Main(string[] args)
         {
+            VerticalLine v1 = new VerticalLine(0, 0, 24, '%');
+            Draw(v1);
+
             // размер буфера не меньше размера консоли и не больше int64
-            Console.SetBufferSize( 130, 130);
+            //Console.SetBufferSize( 130, 130);
 
             //Отрисовка рамки
-            HorizontalLine upLine = new HorizontalLine(0, 78, 0, '#');
-            HorizontalLine downLine = new HorizontalLine(0, 78, 24, '#');
-            VerticalLine leftLine = new VerticalLine(0, 0, 24, '#');
-            VerticalLine rightLine = new VerticalLine(78, 0, 24, '#');
-            upLine.Draw();
-            downLine.Draw();
-            leftLine.Draw();
-            rightLine.Draw();
+            //HorizontalLine upLine = new HorizontalLine(0, 78, 0, '#');
+            //HorizontalLine downLine = new HorizontalLine(0, 78, 24, '#');
+            //VerticalLine leftLine = new VerticalLine(0, 0, 24, '#');
+            //VerticalLine rightLine = new VerticalLine(78, 0, 24, '#');
+            //upLine.Draw();
+            //downLine.Draw();
+            //leftLine.Draw();
+            //rightLine.Draw();
 
             // Отрисовка точек
             Point p = new Point(4, 5, '*');
-            Snake snake = new Snake( p, 4, Direction.RIGHT );
-            snake.Draw();
-            // Опишем метод, позволяющий отслеживать точки (магия C#)
+            //Snake snake = new Snake( p, 4, Direction.RIGHT );
+            //snake.Draw();
+            Figure fSnake = new Snake(p, 4, Direction.RIGHT);
+            Draw(fSnake);
+            Snake snake = (Snake)fSnake;
 
-            // Добавили появление еды на карте
-            FoodCreator foodCreator = new FoodCreator(78, 24, '$');
-            Point food = foodCreator.CreateFood();
-            food.Draw();
+            HorizontalLine h1 = new HorizontalLine(0, 78, 0, '#');
 
-            while (true)
+            List<Figure> figures = new List<Figure>();
+            figures.Add(fSnake);
+            figures.Add(v1);
+            figures.Add(h1);
+
+            foreach (var f in figures)
             {
-                // True or False (возвращает бинарное значение)
-                if(snake.Eat( food ) )
-                {
-                    food = foodCreator.CreateFood();
-                    //food = foodCreator.CreateFood();
-                    food.Draw();
-                }
-                else
-                {
-                    snake.Move();
-                }
-                Thread.Sleep(100);
-
-                if (Console.KeyAvailable)
-                {
-                    ConsoleKeyInfo key = Console.ReadKey();
-                    snake.HandleKey(key.Key);
-                }
-
+                f.Draw();
             }
-            /*
-            while(true)
-            {
-                if(Console.KeyAvailable)
-                {
-                    ConsoleKeyInfo key = Console.ReadKey();
-                    snake.HandleKey(key.Key);
-                }
-                Thread.Sleep(100);
-                snake.Move();
-            }
-            */
-//Console.ReadLine();
         }
+
+            static void Draw( Figure figure)
+            {
+                figure.Draw();
+            }
+
+        // Добавили появление еды на карте
+        /*
+                    FoodCreator foodCreator = new FoodCreator(78, 24, '$');
+                    Point food = foodCreator.CreateFood();
+                    food.Draw();
+
+                    while (true)
+                    {
+                        // True or False (возвращает бинарное значение)
+                        if(snake.Eat( food ) )
+                        {
+                            food = foodCreator.CreateFood();
+                            //food = foodCreator.CreateFood();
+                            food.Draw();
+                        }
+                        else
+                        {
+                            snake.Move();
+                        }
+                        Thread.Sleep(100);
+
+                        if (Console.KeyAvailable)
+                        {
+                            ConsoleKeyInfo key = Console.ReadKey();
+                            snake.HandleKey(key.Key);
+                        }
+
+
+                    }
+    }
+    */
     }
 }
 

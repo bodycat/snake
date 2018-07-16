@@ -12,8 +12,8 @@ namespace Snake
 //      List<Point> pList;
         protected List<Point> pList;
 //      Чтобы pList была видна у наследников
-
-        public void Draw()
+// Создали виртуал, любой наследник может переопределить его и написать свою версию Draw
+        public virtual void Draw()
         {
             foreach (Point p in pList)
             {

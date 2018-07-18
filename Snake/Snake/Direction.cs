@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
-    //    class Direction меняем на enum - перечисления
-    enum Direction
-    {
-        LEFT,
-        RIGHT,
-        UP,
-        DOWN
-    }
+	enum Direction
+	{
+		LEFT,
+		RIGHT,
+		UP,
+		DOWN
+	}
 }

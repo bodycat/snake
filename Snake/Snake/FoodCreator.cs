@@ -6,32 +6,26 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
-    class FoodCreator
-    {
-        // Ширина
-        int mapWidth;
-        // Высота
-        int mapHeight; 
-        // Символ еды
-        char sym;
-    
-        // 2 минуты
-        Random random = new Random();
+	class FoodCreator
+	{
+		int mapWidht;
+		int mapHeight;
+		char sym;
 
-        public FoodCreator(int mapWidth, int mapHeight, char sym)
-        {
-            this.mapWidth = mapWidth;
-            // Помечаем паблик переменные через this
-            // Те, что в качестве аргумента без this
-            this.mapHeight = mapHeight;
-            this.sym = sym;
-        }
+		Random random = new Random( );
 
-        public Point CreateFood()
-        {
-            int x = random.Next( 2, mapWidth - 2);
-            int y = random.Next( 2, mapHeight - 2);
-            return new Point( x, y, sym);
-        }
-    }
+		public FoodCreator(int mapWidth, int mapHeight, char sym)
+		{
+			this.mapWidht = mapWidth;
+			this.mapHeight = mapHeight;
+			this.sym = sym;
+      }
+
+		public Point CreateFood()
+		{
+			int x = random.Next( 2, mapWidht - 2 );
+			int y = random.Next( 2, mapHeight - 2 );
+			return new Point( x, y, sym );
+		}
+	}
 }

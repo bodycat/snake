@@ -6,30 +6,27 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
-    class Figure
-    {
-// После добавления наследования необходимо заменить индетификатор доступа
-//      List<Point> pList;
-        protected List<Point> pList;
-//      Чтобы pList была видна у наследников
-// Создали виртуал, любой наследник может переопределить его и написать свою версию Draw
-        public virtual void Draw()
-        {
-            foreach (Point p in pList)
-            {
-                p.Draw();
-            }
-        }
+	class Figure
+	{
+		protected List<Point> pList;
 
-        internal bool IsHit( Figure figure )
-        {
-            foreach( var p in pList)
-            {
-                if ( figure.IsHit( p ))
-                    return true;
-            }
-            return false;
-        }
+		public void Draw()
+		{
+			foreach ( Point p in pList )
+			{
+				p.Draw();
+			}
+		}
+
+		internal bool IsHit( Figure figure )
+		{
+			foreach(var p in pList)
+			{
+				if ( figure.IsHit( p ) )
+					return true;
+			}
+			return false;
+		}
 
 		private bool IsHit( Point point )
 		{
@@ -40,5 +37,5 @@ namespace Snake
 			}
 			return false;
 		}
-    }
+	}
 }

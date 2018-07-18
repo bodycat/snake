@@ -16,11 +16,12 @@ namespace Snake
         {
         }
         // Конструкторы - методы, с  помощью которых создаём различные точки
-        public Point(int _x, int _y, char _sym)
+        public Point(int x, int y, char sym)
         {
-            x = _x;
-            y = _y;
-            sym = _sym;
+            //this
+            this.x = x;
+            this.y = y;
+            this.sym = sym;
         }
         // Методы, которые можем вызывать для каждой конкретной точки
 
@@ -51,6 +52,12 @@ namespace Snake
             }
         }
 
+        // Добавили IsHit
+        public bool IsHit(Point p)
+		{
+			return p.x == this.x && p.y == this.y;
+		}
+
         public void Draw()
         {
             //нужно проверку поставить на выход из границ
@@ -63,13 +70,13 @@ namespace Snake
             sym = ' ';
             Draw();
         }
-
+/* Перекинули в класс Figure
         public bool IsHit(Point p)
         // Проверка, есть ли пересечения текущей точки 
         {
             return p.x == this.x && p.y == this.y;
         }
-
+*/
         public override string ToString()
         {
             // return base.ToString();

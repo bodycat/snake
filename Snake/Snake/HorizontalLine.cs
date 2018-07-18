@@ -11,7 +11,6 @@ namespace Snake
     {
 // После добавления наследования можно убрать следующее:
 //      List<Point> pList;
-
         public HorizontalLine(int xLeft, int xRight, int y, char sym)
         {
             pList = new List<Point>();
@@ -24,16 +23,15 @@ namespace Snake
                 pList.Add(p);
             }
         }
-        public override void Draw()
+/* хороший пример перезаписи - Желтая граница
+    public override void Draw()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
 
             foreach(Point p in pList)
             base.Draw();
-            /*{
-                p.Draw();
-            }*/
             Console.ForegroundColor = ConsoleColor.White;
         }
+*/
     }
 }

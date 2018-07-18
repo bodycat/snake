@@ -36,6 +36,7 @@ namespace Snake
             //Draw(v1);
 
             Console.SetBufferSize( 130, 130);
+
             Walls walls = new Walls(80, 25);
             walls.Draw();
 
@@ -43,22 +44,22 @@ namespace Snake
 
             // Отрисовка точек
             Point p = new Point(4, 5, '*');
-            //Snake snake = new Snake( p, 4, Direction.RIGHT );
+            Snake snake = new Snake( p, 4, Direction.RIGHT );
             //snake.Draw();
-            Figure Snake = new Snake(p, 4, Direction.RIGHT);
+            Snake Snake = new Snake(p, 4, Direction.RIGHT);
             snake.Draw();
 
-            FoodCreator foodCreator = new FoodCreator(78, 24, '$');
+            FoodCreator foodCreator = new FoodCreator(80, 25, '$');
             Point food = foodCreator.CreateFood();
             food.Draw();
 
             while (true)
             {
-                if (walls.IsHit(snake) || Snake.IsHitTail)
+                if (walls.IsHit(snake) || Snake.IsHitTail())
                 {
                     break;
                 }
-                if(snake.Eat(food))
+                if(snake.Eat( food ))
                 {
                     food = foodCreator.CreateFood();
                     food.Draw();
@@ -76,55 +77,6 @@ namespace Snake
                     snake.HandleKey(key.Key);
                 }
             }
-
-            List<Figure> figures = new List<Figure>();
-            figures.Add(fSnake);
-            figures.Add(v1);
-            figures.Add(h1);
-
-            foreach (var f in figures)
-            {
-                f.Draw();
-            }
         }
-
-            static void Draw( Figure figure)
-            {
-                figure.Draw();
-            }
-
-        // Добавили появление еды на карте
-        /*
-                    FoodCreator foodCreator = new FoodCreator(78, 24, '$');
-                    Point food = foodCreator.CreateFood();
-                    food.Draw();
-
-                    while (true)
-                    {
-                        // True or False (возвращает бинарное значение)
-                        if(snake.Eat( food ) )
-                        {
-                            food = foodCreator.CreateFood();
-                            //food = foodCreator.CreateFood();
-                            food.Draw();
-                        }
-                        else
-                        {
-                            snake.Move();
-                        }
-                        Thread.Sleep(100);
-
-                        if (Console.KeyAvailable)
-                        {
-                            ConsoleKeyInfo key = Console.ReadKey();
-                            snake.HandleKey(key.Key);
-                        }
-
-
-                    }
-    }
-    */
     }
 }
-
-// ДЗ - нет

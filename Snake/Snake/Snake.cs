@@ -14,6 +14,7 @@ namespace Snake
         // public Direction direction;
         // Вернули код HandleKey в класс Snake, убираем public
         Direction direction;
+
         public Snake(Point tail, int length, Direction _direction)
         {
             direction = _direction;
@@ -39,19 +40,30 @@ namespace Snake
 
         public Point GetNextPoint()
         {
-            // текущая позиция головы змейки
+            // Текущая позиция головы змейки
             Point head = pList.Last();
-            // создаем новую точку, копия предыдущего положения головы
+            // Создаем новую точку, копия предыдущего положения головы
             Point nextPoint = new Point(head);
-            // двигаем точку по направлению дирекшн
+            // Двигаем точку по направлению дирекшн
             nextPoint.Move(1, direction);
             return nextPoint;
         }
 
+        internal bool IsHitTail()
+		{
+			var head = pList.Last();
+			for(int i = 0; i < pList.Count - 2; i++ )
+			{
+				if ( head.IsHit( pList[ i ] ) )
+					return true;
+			}
+			return false;
+		}
+
         public void HandleKey(ConsoleKey key)
         {
             if (key == ConsoleKey.LeftArrow)
-                //доступа к direction до public в Snake не было
+                // Доступа к direction до public в Snake не было
                 direction = Direction.LEFT;
             else if (key == ConsoleKey.RightArrow)
                 direction = Direction.RIGHT;
@@ -67,8 +79,8 @@ namespace Snake
             if ( head.IsHit( food ) )
             {
                 // if(head.x == food.x && head.y ==food.y)
-                // эта проверка в ответственности класса точка
-                // акт питания, если точка совпадает с головой змеи
+                // Эта проверка в ответственности класса точка
+                // Акт питания, если точка совпадает с головой змеи
                 food.sym = head.sym;
                 pList.Add( food );
                 return true;
